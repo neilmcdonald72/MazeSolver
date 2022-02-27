@@ -1,0 +1,50 @@
+#include "stack.h"
+#include <iostream>
+
+Stack::~Stack() {
+}
+
+void Stack::push(Coordinate num) {
+
+    auto new_node = new Node();
+    new_node->m_data = num;
+    new_node->m_next = m_top;
+    m_top = new_node;
+}
+
+Coordinate Stack::peek() {
+    if (m_top != nullptr)
+        return m_top->m_data;
+    return {-1, -1};
+}
+
+void Stack::pop() {
+    if (m_top != nullptr) {
+        auto node = m_top;
+        m_top = m_top->m_next;
+        delete node;
+    } else {
+        std::cout << "There are no more nodes to remove..." << std::endl;
+    }
+}
+
+int Stack::count()
+{
+    Node* temp = m_top;
+    int counter = 0;
+    while (temp != nullptr) {
+        temp = temp->m_next;
+        counter++;
+    }
+    return counter;
+}
+
+
+std::ostream& operator<<(std::ostream& output, Stack& stack) {
+    auto node = stack.m_top;
+    while (node != nullptr) {
+        output << node->m_data << " ";
+        node = node->m_next;
+    }
+    return output;
+}
