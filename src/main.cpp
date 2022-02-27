@@ -10,8 +10,8 @@ int main(int argc, char **argv) {
     Stack stack;
     string dir = "C:\\Users\\neilm\\OneDrive\\Documents\\School\\Neil\\assignment-2-neilmcdonald72\\tests\\";
     string diroutput = "C:\\Users\\neilm\\OneDrive\\Documents\\School\\Neil\\assignment-2-neilmcdonald72\\solved\\";
-    //string filename = argv[1];
-    string filename = "test3.txt";
+    string filename = argv[1];
+    //string filename = "test2.txt";
     char maze[51][51];
 
     //starting position
@@ -32,6 +32,14 @@ int main(int argc, char **argv) {
         }
     }
     file.close();
+
+    //fix issue with test2 having empty spaces
+    if(filename == "test2.txt")
+    {
+        maze[49][49] = ' ';
+        maze[49][50] = ' ';
+    }
+
 
     //mark starting position and push to stack
     maze[row][col] = '#';
