@@ -1,5 +1,7 @@
 #include "coordinate.h"
 #include "stack.h"
+#include "stack.cpp"
+#include "coordinate.cpp"
 #include <iostream>
 #include <fstream>
 
